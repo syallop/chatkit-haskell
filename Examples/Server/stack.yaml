@@ -1,0 +1,12 @@
+resolver: lts-14.23
+packages:
+- .
+allow-newer: true
+extra-deps:
+- http2-client-0.9.0.0
+- prometheus-metrics-ghc-1.0.0
+- wai-middleware-prometheus-1.0.0
+- git: "https://github.com/syallop/Chatkit-Haskell"
+  commit: master
+- git: "https://github.com/syallop/Pusher-Platform-Haskell"
+  commit: master

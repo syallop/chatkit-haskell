@@ -1,0 +1,138 @@
+name:                chatkit-haskell
+version:             0.1.0.0
+synopsis:            Bindings to Chatkit for use with pusher-platform-haskell clients
+description:         For a full description see the README.md
+license:             MIT
+license-file:        LICENSE
+author:              Samuel A. Yallop
+maintainer:          syallop@gmail.com
+category:            Chatkit
+build-type:          Simple
+extra-source-files:
+cabal-version:       >=1.10
+
+-- The Chatkit library to be imported by servers/ clients who wish to interact
+-- with Chatkit.
+library
+  exposed-modules:     Chatkit,
+                       Chatkit.Model,
+                       Chatkit.Service.Core,
+                       Chatkit.Service.Cursors,
+                       Chatkit.Service.Files,
+                       Chatkit.Service.InsecureTokenProvider,
+                       Chatkit.Service.Scheduler,
+                       Chatkit.Service.Presence,
+                       Chatkit.Service.RolesAndPermissions,
+                       Chatkit.Service.Undocumented,
+                       -- Modules for Unit testing
+                       Chatkit.Test.Unit
+
+  -- other-modules:
+  -- other-extensions:
+  build-depends:       base >= 4.12
+                     , pusher-platform-haskell
+                     , aeson
+                     , bytestring
+                     , containers
+                     , containers >= 0.5
+                     , data-default-class
+                     , exceptions
+                     , http-types
+                     , http2
+                     , http2
+                     , http2-client
+                     , jwt
+                     , mtl
+                     , prometheus-client
+                     , prometheus-metrics-ghc
+                     , scientific
+                     , semigroups
+                     , text
+                     , text
+                     , time
+                     , time
+                     , tls
+                     , transformers
+                     , utf8-string
+                     , utf8-string
+                     , vector
+                     , wai
+                     , wai-middleware-prometheus
+                     , warp
+
+  -- hs-source-dirs:
+  default-language:    Haskell2010
+
+test-suite unit-test
+  type:                exitcode-stdio-1.0
+  main-is:             Unit.hs
+
+  --exposed-modules:     Main
+  build-depends:       base
+                     , pusher-platform-haskell
+                     , chatkit-haskell
+
+                     , aeson
+                     , bytestring
+                     , containers
+                     , data-default-class
+                     , http-types
+                     , http2
+                     , http2-client
+                     , jwt
+                     , prometheus-client
+                     , prometheus-metrics-ghc
+                     , scientific
+                     , text
+                     , time
+                     , tls
+                     , utf8-string
+                     , vector
+                     , wai
+                     , wai-middleware-prometheus
+                     , warp
+
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+-- An Example executable that runs a happy-path of each Chatkit endpoint
+executable unit
+  main-is:             Unit.hs
+  other-modules:       Chatkit,
+                       Chatkit.Test.Unit,
+                       Chatkit.Model,
+                       Chatkit.Service.Core,
+                       Chatkit.Service.Cursors,
+                       Chatkit.Service.Files,
+                       Chatkit.Service.InsecureTokenProvider,
+                       Chatkit.Service.Presence,
+                       Chatkit.Service.Scheduler,
+                       Chatkit.Service.RolesAndPermissions,
+                       Chatkit.Service.Undocumented
+  build-depends:       base >= 4.12
+                     , pusher-platform-haskell
+                     , chatkit-haskell
+
+                     , aeson
+                     , bytestring
+                     , containers
+                     , data-default-class
+                     , http2
+                     , http2-client
+                     , jwt
+                     , scientific
+                     , text
+                     , time
+                     , tls
+                     , utf8-string
+                     , vector
+                     , prometheus-client
+                     , prometheus-metrics-ghc
+                     , warp
+                     , http-types
+                     , wai
+                     , wai-middleware-prometheus
+
+  default-language:    Haskell2010
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+
